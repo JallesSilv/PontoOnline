@@ -1,0 +1,16 @@
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\configuracoes.json
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.deps.json
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.runtimeconfig.json
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.runtimeconfig.dev.json
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.dll
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.pdb
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Dominio.dll
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Dominio.pdb
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.csprojAssemblyReference.cache
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.AssemblyInfoInputs.cache
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.AssemblyInfo.cs
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.csproj.CoreCompileInputs.cache
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.csproj.CopyComplete
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.dll
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.pdb
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.genruntimeconfig.cache

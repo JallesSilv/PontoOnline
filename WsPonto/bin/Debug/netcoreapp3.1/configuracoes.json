@@ -1,0 +1,9 @@
+{
+  "DataSource": "JALLES",
+  "InitialCatalog": "Pontos",
+  "UserID": "root",
+  "Password": "#super#",
+  "Uf": "GO",
+  //Modo true = Console ou false = Servico
+  "StateMode": "true"
+}
