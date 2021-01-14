@@ -23,48 +23,46 @@ namespace WsPonto.Controllers
             contexto = _contexto;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ChaveId"></param>
+        /// <returns></returns>
+        [HttpPost]
         //[AllowAnonymous]
-        //[EnableCors("AlowsCors")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        [HttpGet]
-        [Route("User")]
-        [Authorize(Roles = "Administrador")]
-        public string Usuarios() => "teste ok ";
-        
+        [EnableCors("AlowsCors")]
+        [Route("Get")]
+        [Authorize(Roles = "administrador")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public IActionResult Get(Int64 pId)
+        {
+            try
+            {
+                var usuario = contexto.ObterChave(pId);
 
-        //[HttpPost]
-        ////[AllowAnonymous]
-        //[EnableCors("AlowsCors")]
-        //[Route("Usuarios")]
-        //[Authorize(Roles = "Administrador, Funcionario")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public IActionResult Gett(Usuario pValor)
-        //{
-        //    try
-        //    {
-        //        var usuario = contexto.ObterUsuario(pValor);
+                if (usuario == null)
+                {
+                    return BadRequest("Usuário ou Senha não localizado!!");
+                }
 
-        //        if (usuario == null)
-        //        {
-        //            return BadRequest("Usuário ou Senha não localizado!!");
-        //        }
+                return Ok(usuario);
 
-        //        var access_token = TokenServices.GenerateToken(usuario);
+                //var access_token = TokenServices.GenerateToken(usuario);
 
-        //        usuario.Senha = "";
-        //        return Created("api/Authenticate", new
-        //        {
-        //            //usuario = usuario,
-        //            access_token = access_token
-        //        });
+                //usuario.Senha = "";
+                //return Created("api/Authenticate", new
+                //{
+                //    //usuario = usuario,
+                //    access_token = access_token
+                //});
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest($"Erro: {ex.Message}");
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro: {ex.Message}");
+            }
+        }
     }
 }

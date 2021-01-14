@@ -8,7 +8,7 @@ namespace Dominio.Contratos
     {
         void Adicionar(TEntity entity);
 
-        TEntity ObterChave(int pChave);
+        TEntity ObterChave(Int64 pChave);
 
         IEnumerable<TEntity> ObterTodos();
 

@@ -14,7 +14,11 @@ using Repositorio.Config;
 using Repositorio.Contexto;
 using Repositorio.Migrations.Base;
 using Repositorio.Repository;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace WsPonto
@@ -60,47 +64,60 @@ namespace WsPonto
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ICargoRepository, CargoRepository>();
             services.AddScoped<INivelAcessoRepository, NivelAcessoRepository>();
+            services.AddTransient<RodarMigration>();
 
             services.AddControllers()
                     .AddNewtonsoftJson(opt =>
                         opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            
+            services.AddCors(); 
+            services.AddSwaggerGen(wag =>
+            {
+                wag.SwaggerDoc("v1", new OpenApiInfo { Title = "Api Ponto Engegraph", Version = VersaoApi.VersaoWeb });
+                wag.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Bearer scheme."
+                });
+
+                wag.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new string[] {}
+                    }
+                });
+            });
 
             var key = Encoding.ASCII.GetBytes(Token.Secret);
-            services.AddAuthentication(pX=>
+            services.AddAuthentication(pX =>
             {
                 pX.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 pX.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(pX => 
+            .AddJwtBearer(pX =>
             {
                 pX.RequireHttpsMetadata = false;
                 pX.SaveToken = true;
                 pX.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
                 };
-            });
-
-            services.AddTransient<RodarMigration>();
-
-            services.AddSwaggerGen(wag =>
-            {
-                wag.SwaggerDoc("v1", new OpenApiInfo { Title = "Api Ponto Engegraph", Version = VersaoApi.VersaoWeb });
-                wag.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
-                      Enter 'Bearer' [space] and then your token in the text input below.
-                      \r\n\r\nExample: 'Bearer 12345abcdef'",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer"
-                });
             });
         }
 
@@ -116,34 +133,39 @@ namespace WsPonto
                 app.UseHsts();
             }
 
-            app.UseMvc(option =>
-            {
-                option.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "Home", action = "Index" });
-            });
+            //app.UseMvc(option =>
+            //{
+            //    option.MapRoute(
+            //        name: "default",
+            //        template: "{controller}/{action}/{id?}",
+            //        defaults: new { controller = "Home", action = "Index" });
+            //});
 
             app.UseSwagger(v => v.SerializeAsV2 = true);
             app.UseSwagger();
-            app.UseSwaggerUI(swa => {
-                swa.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Ponto Engegraph");
+
+            app.UseSwaggerUI(swa =>
+            {
+                swa.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Ponto Online");
                 swa.RoutePrefix = string.Empty;
             });
 
-
-            //Migration
-            var serviceProv = app.ApplicationServices;
-            var rodarMigration = serviceProv.GetService<RodarMigration>();
-            rodarMigration.Executar();
+            ////Migration
+            //var serviceProv = app.ApplicationServices;
+            //var rodarMigration = serviceProv.GetService<RodarMigration>();
+            //rodarMigration.Executar();
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(x => x
+               .AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader());
+
             app.UseAuthentication();
-            app.UseAuthorization(); 
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

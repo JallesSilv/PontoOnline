@@ -37,7 +37,7 @@ namespace Repositorio.Repository
             Contexto.SaveChanges();
         }
 
-        public TEntity ObterChave(int pChave)
+        public TEntity ObterChave(Int64 pChave)
         {
             try
             {

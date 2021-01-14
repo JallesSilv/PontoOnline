@@ -25,8 +25,8 @@ namespace WsPonto.Controllers
 
         
         [HttpPost]
-        [EnableCors("AlowsCors")]
         [AllowAnonymous]
+        [EnableCors("AlowsCors")]
         [Route("Authenticate")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -42,11 +42,11 @@ namespace WsPonto.Controllers
                 }
 
                 var access_token = TokenServices.GenerateToken(usuario);
-
+                usuario = contexto.ObterChave(usuario.ChaveUsuario);
                 usuario.Senha = "";
                 return Created("api/Authenticate", new
                 {
-                    //usuario = usuario,
+                    user = usuario,
                     access_token = access_token
                 });
 
