@@ -20,10 +20,11 @@ namespace Repositorio.ServiceToken
                 {
                    new Claim(ClaimTypes.Name, user.Nome.AsString()),
                    new Claim(ClaimTypes.NameIdentifier, user.ChaveUsuario.AsString()),
-                   new Claim(ClaimTypes.Role, user.NivelAcesso.NomeNivelAcesso.AsString())
+                   new Claim(ClaimTypes.Role, user.Cargo.NomeCargo.AsString())
                 }),
-                Expires = DateTime.UtcNow.AddHours(2),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                Expires = DateTime.UtcNow.AddSeconds(20),
+                SigningCredentials = new SigningCredentials(
+                    new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);

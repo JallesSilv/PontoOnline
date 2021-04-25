@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Dominio.Entidades
 {
-    public partial class Login
+    public class Login
     {
         public string Cpf { get; set; }
+        public string Email { get; set; }
         public string Senha { get; set; }
     }
 }

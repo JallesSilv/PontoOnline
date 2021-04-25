@@ -8,8 +8,13 @@ namespace Dominio.Entidades
     public partial class NivelAcesso
     {
         [Key]
-        public Int64 ChaveNivelAcesso { get; set; }
-        public string NomeNivelAcesso { get; set; }
+        public Guid ChaveNivelAcesso { get; set; }
+        public string Descricao { get; set; }
+        public bool TCargo { get; set; }
+        public bool TUsuario { get; set; }
+        public bool TEmpresa { get; set; }
+        public bool TImagam { get; set; }
+        public bool TPonto { get; set; }
         public bool Ativo { get; set; }
     }
 }

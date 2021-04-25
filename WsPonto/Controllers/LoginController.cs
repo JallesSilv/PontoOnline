@@ -30,11 +30,11 @@ namespace WsPonto.Controllers
         [Route("Authenticate")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Authenticate([FromBody] Login pLogin)
+        public async Task<ActionResult> Authenticate([FromBody] Usuario user)
         {
             try
             {
-                var usuario = contexto.ObterToken(pLogin);
+                var usuario = await contexto.ObterToken(user);
 
                 if (usuario == null)
                 {
@@ -44,9 +44,10 @@ namespace WsPonto.Controllers
                 var access_token = TokenServices.GenerateToken(usuario);
                 usuario = contexto.ObterChave(usuario.ChaveUsuario);
                 usuario.Senha = "";
+
                 return Created("api/Authenticate", new
                 {
-                    user = usuario,
+                    //user = usuario,
                     access_token = access_token
                 });
 
@@ -57,45 +58,33 @@ namespace WsPonto.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("Authenticated")]
-        [Authorize]
-        public string Authenticated() => String.Format("Autenticado - {0}", User.Identity.Name);
 
-
-        [HttpGet]
-        [Route("Administrador")]
-        //[AllowAnonymous]
-        [Authorize(Roles = "Administrador")]
-        public string Administrador() => "teste ok ";
-
-
+        [HttpPost]
         [AllowAnonymous]
         [EnableCors("AlowsCors")]
-        //[ApiVersion("1.0")]
-        [HttpPost]
-        [Route("Post")]
+        [Route("Registrar")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Post([FromBody] Usuario usuario)
+        public async Task<ActionResult> Registrar([FromBody] Usuario pLogin)
         {
             try
             {
-                var usuarioAtivo = "";// contexto.ObterUsuario(usuario.Cpf, usuario.Senha);
-                if (usuarioAtivo != null)
+                var usuario = await contexto.Registrar(pLogin);
+
+                if (usuario == null)
                 {
-                    return BadRequest("Usuário já cadastrado!!");
+                    return BadRequest("Usuário ou Senha não localizado!!");
                 }
-                else
+                return Created("api/Authenticate", new
                 {
-                    //contexto.Adicionar(usuario);
-                    return Created("api/usuario", usuario);
-                }
+                    usuario
+                });
             }
             catch (Exception ex)
             {
                 return BadRequest($"Erro: {ex.Message}");
             }
         }
+        
     }
 }

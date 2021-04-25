@@ -22,16 +22,22 @@ namespace Repositorio.Migrations.XMigrationBanco
                     try
                     {
                         cmd.CommandText =
-                         @"CREATE TABLE NivelAcesso(
+                         @"CREATE TABLE NivelAcesso (
 	                            [ChaveNivelAcesso] [bigint] NOT NULL,
 	                            [NomeNivelAcesso] [nvarchar](100) NULL,
+	                            [TCargo] [bit] NULL,
+	                            [TUsuario] [bit] NULL,
+	                            [TEmpresa] [bit] NULL,
+	                            [TImagam] [bit] NULL,
+	                            [TPonto] [bit] NULL,
 	                            [Ativo] [bit] NULL,
                              CONSTRAINT [PK_NivelAcesso] PRIMARY KEY CLUSTERED 
                             (
 	                            [ChaveNivelAcesso] ASC
                             )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
                             ) ON [PRIMARY]
-                            GO
+
+                            ALTER TABLE NivelAcesso SET (LOCK_ESCALATION = AUTO)
                          ";
                         cmd.ExecuteNonQuery();
                         XLog.RegistraLog($"Tabela {XConfig.InitialCatalog}.", "ModeloBanco");

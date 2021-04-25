@@ -2040,6 +2040,14 @@
         "runtime": {
           "WsPonto.dll": {}
         }
+      },
+      "Utilitarios/1.0.0.0": {
+        "runtime": {
+          "Utilitarios.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -3461,6 +3469,11 @@
     },
     "WsPonto/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Utilitarios/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

@@ -40,9 +40,14 @@ namespace Repositorio.Config
             return Convert.ToBoolean(pValor);
         }
 
-        public static int AsInt64(this object pValor)
+        public static Int64 AsInt64(this object pValor)
         {
-            return Convert.ToInt32(pValor);
+            return (Int64)Convert.ToInt64(pValor);
+        }
+
+        public static int AsInt32(this object pValor)
+        {
+            return (int)Convert.ToInt32(pValor);
         }
     }
 }

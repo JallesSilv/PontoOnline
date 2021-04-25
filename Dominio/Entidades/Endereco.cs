@@ -10,15 +10,24 @@ namespace Dominio.Entidades
     public partial class Endereco
     {
         [Key]
-        public Int64 ChaveEndereco { get; set; }
+        public Guid ChaveEndereco { get; set; }
+
+        [MaxLength(8)]
         public string Cep { get; set; }
-        public string Logradouro { get; set; }
-        public string Complemento { get; set; }
-        public string Bairro { get; set; }
-        public string Localidade { get; set; }
+        [MaxLength(2)]
         public string Uf { get; set; }
+        [MaxLength(30)]
+        public string Estado { get; set; }
+        [MaxLength(50)]
+        public string Cidade { get; set; }
+        [MaxLength(50)]
+        public string Bairro { get; set; }
+        [MaxLength(500)]
+        public string Complemento { get; set; }
+        [MaxLength(500)]
+        public string Logradouro { get; set; }
         public string Ibge { get; set; }
-        public string Gia { get; set; }
+        [MaxLength(2)]
         public string Ddd { get; set; }
         public string Siafi { get; set; }
     }

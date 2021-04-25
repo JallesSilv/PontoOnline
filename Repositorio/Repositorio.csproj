@@ -34,6 +34,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Utilitarios">
+      <HintPath>..\..\..\Recursos\Comum\Utilitarios\bin\Debug\netcoreapp3.1\Utilitarios.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="configuracoes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

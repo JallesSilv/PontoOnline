@@ -8,13 +8,16 @@ namespace Dominio.Entidades
     public partial class Empresa
     {
         [Key]
-        public Int64 ChaveEmpresa { get; set; }
+        public Guid ChaveEmpresa { get; set; }
+        [MaxLength(100)]
         public string NomeEmpresa { get; set; }
+        [MaxLength(14)]
         public Int64 Cnpj { get; set; }
+        [MaxLength(20)]
         public string Inscricao { get; set; }
         public DateTime DataCadastro { get; set; }
         [ForeignKey("Endereco")]
-        public Int64 ChaveEndereco { get; set; }
+        public Guid ChaveEndereco { get; set; }
         public virtual Endereco Endereco { get; set; }
     }
 }

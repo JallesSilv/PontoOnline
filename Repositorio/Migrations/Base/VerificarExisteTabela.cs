@@ -19,7 +19,7 @@ namespace Repositorio.Migrations.Base
                 try
                 {
                     cmd.CommandText = str;
-                    resultado = cmd.ExecuteScalar().AsInt64();
+                    resultado = cmd.ExecuteScalar().AsInt32();
                 }
                 catch (Exception error)
                 {
@@ -48,7 +48,7 @@ namespace Repositorio.Migrations.Base
                 try
                 {
                     cmd.CommandText = strQuery;
-                    resultado = cmd.ExecuteScalar().AsInt64();
+                    resultado = cmd.ExecuteScalar().AsInt32();
                 }
                 catch (Exception error)
                 {

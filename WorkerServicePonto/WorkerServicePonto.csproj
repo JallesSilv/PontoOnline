@@ -5,6 +5,10 @@
     <UserSecretsId>dotnet-WorkerServicePonto-97037761-383B-4DD1-B2C8-14FBAF37322E</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\Binarios\Servidor\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">

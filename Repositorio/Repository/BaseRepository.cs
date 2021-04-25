@@ -1,4 +1,5 @@
 ﻿using Dominio.Contratos;
+using Microsoft.EntityFrameworkCore;
 using Repositorio.Contexto;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,13 @@ namespace Repositorio.Repository
             Contexto = contexto;
         }
 
-        public void Adicionar(TEntity entity)
+        public TEntity Create(TEntity entity)
         {
             try
             {
                 Contexto.Set<TEntity>().Add(entity);
                 Contexto.SaveChanges();
+                return entity;
             }
             catch (Exception error)
             {
@@ -30,14 +32,14 @@ namespace Repositorio.Repository
             }
         }
 
-        public void Atualizar(TEntity entity)
+        public void Edit(TEntity entity)
         {
             Contexto.Set<TEntity>().Update(entity);
 
             Contexto.SaveChanges();
         }
 
-        public TEntity ObterChave(Int64 pChave)
+        public TEntity ObterChave(Guid pChave)
         {
             try
             {
@@ -63,7 +65,7 @@ namespace Repositorio.Repository
             }
         }
 
-        public void Remover(TEntity entity)
+        public void Delete(TEntity entity)
         {
             Contexto.Set<TEntity>().Remove(entity);
             Contexto.SaveChanges();

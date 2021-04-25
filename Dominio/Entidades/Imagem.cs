@@ -10,7 +10,7 @@ namespace Dominio.Entidades
     public partial class Imagem
     {
         [Key]
-        public Int64 ChaveImagem { get; set; }
+        public Guid ChaveImagem { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime DataFinal { get; set; }
         public byte ByteImagem { get; set; }

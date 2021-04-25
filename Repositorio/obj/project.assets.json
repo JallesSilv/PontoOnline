@@ -8340,7 +8340,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jalle\\.nuget\\packages\\": {}
+    "C:\\Users\\Jalles-Not\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -8348,11 +8348,11 @@
       "projectUniqueName": "D:\\CSharp\\PontoEngegraph\\WorkerServicePonto\\Repositorio\\Repositorio.csproj",
       "projectName": "Repositorio",
       "projectPath": "D:\\CSharp\\PontoEngegraph\\WorkerServicePonto\\Repositorio\\Repositorio.csproj",
-      "packagesPath": "C:\\Users\\jalle\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Jalles-Not\\.nuget\\packages\\",
       "outputPath": "D:\\CSharp\\PontoEngegraph\\WorkerServicePonto\\Repositorio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jalle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jalles-Not\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8364,6 +8364,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
             "D:\\CSharp\\PontoEngegraph\\WorkerServicePonto\\Dominio\\Dominio.csproj": {
               "projectPath": "D:\\CSharp\\PontoEngegraph\\WorkerServicePonto\\Dominio\\Dominio.csproj"
@@ -8379,6 +8380,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication": {
             "target": "Package",
@@ -8444,14 +8446,11 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

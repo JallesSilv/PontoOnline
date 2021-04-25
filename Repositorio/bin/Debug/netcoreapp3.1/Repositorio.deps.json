@@ -20,7 +20,8 @@
           "Microsoft.Extensions.Configuration": "5.0.0",
           "Newtonsoft.Json": "12.0.3",
           "Ninject": "3.3.4",
-          "System.Data.SqlClient": "4.8.2"
+          "System.Data.SqlClient": "4.8.2",
+          "Utilitarios": "1.0.0.0"
         },
         "runtime": {
           "Repositorio.dll": {}
@@ -1588,6 +1589,14 @@
         "runtime": {
           "Dominio.dll": {}
         }
+      },
+      "Utilitarios/1.0.0.0": {
+        "runtime": {
+          "Utilitarios.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -2726,6 +2735,11 @@
     },
     "Dominio/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Utilitarios/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

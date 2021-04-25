@@ -10,7 +10,7 @@ namespace Dominio.Entidades
     public partial class Ponto
     {
         [Key]
-        public Int64 ChavePonto { get; set; }
+        public Guid ChavePonto { get; set; }
         public DateTime Data { get; set; }
     }
 }

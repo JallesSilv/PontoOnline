@@ -10,8 +10,11 @@ namespace Dominio.Entidades
     public partial class Cargo
     {
         [Key]
-        public Int64 ChaveCargo { get; set; }
+        public Guid ChaveCargo { get; set; }
         [MaxLength(50)]
         public string NomeCargo { get; set; }
+        [ForeignKey("NivelAcesso")]
+        public Guid? ChaveNivelAcesso { get; set; }
+        public virtual NivelAcesso NivelAcesso { get; set; }
     }
 }

@@ -5,7 +5,9 @@ D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\
 D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.dll
 D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Repositorio.pdb
 D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Dominio.dll
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Utilitarios.dll
 D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Dominio.pdb
+D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\bin\Debug\netcoreapp3.1\Utilitarios.pdb
 D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.csprojAssemblyReference.cache
 D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.AssemblyInfoInputs.cache
 D:\CSharp\PontoEngegraph\WorkerServicePonto\Repositorio\obj\Debug\netcoreapp3.1\Repositorio.AssemblyInfo.cs

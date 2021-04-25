@@ -17,52 +17,75 @@ namespace WsPonto.Controllers
     public class UsuariosController : ControllerBase
     {
         private readonly IUsuarioRepository contexto;
-
+        
+            
         public UsuariosController(IUsuarioRepository _contexto)
         {
             contexto = _contexto;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ChaveId"></param>
-        /// <returns></returns>
-        [HttpPost]
-        //[AllowAnonymous]
+        [HttpGet("administrador")]
+        [Authorize(Roles = "Administrador")]
+        public string Employee() => "Funcionário";
+
+
         [EnableCors("AlowsCors")]
-        [Route("Get")]
-        [Authorize(Roles = "administrador")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public IActionResult Get(Int64 pId)
+        [HttpGet("GetAll")]
+        [Authorize]
+        public IActionResult GetAll()
         {
             try
             {
-                var usuario = contexto.ObterChave(pId);
+                var teste = contexto.ObterTodos();
+                return Ok(teste);
+            }
+            catch (Exception error)
+            {
+
+                return BadRequest($@"Erro: {error.ToString()} ");
+            }
+        }
+
+        [EnableCors("AlowsCors")]
+        [HttpGet("GetId")]
+        [Authorize]
+        public IActionResult GetId([FromQuery]  Guid pChave)
+        {
+            try
+            {
+                var usuario = contexto.UsuarioChave(pChave);
 
                 if (usuario == null)
                 {
                     return BadRequest("Usuário ou Senha não localizado!!");
                 }
-
                 return Ok(usuario);
-
-                //var access_token = TokenServices.GenerateToken(usuario);
-
-                //usuario.Senha = "";
-                //return Created("api/Authenticate", new
-                //{
-                //    //usuario = usuario,
-                //    access_token = access_token
-                //});
-
             }
             catch (Exception ex)
             {
                 return BadRequest($"Erro: {ex.Message}");
             }
+        }
+
+        [EnableCors("AlowsCors")]
+        [HttpPost("GetUserByAccessToken")]
+        public ActionResult<Usuario> GetUserByAccessToken([FromBody] string accessToken)
+        {
+            try
+            {
+                Usuario user = contexto.GetUserFromAccessToken(accessToken);
+
+                if (user != null)
+                {
+                    return user;
+                }
+                return null;
+            }
+            catch
+            {
+                return BadRequest($"");
+            }
+            
         }
     }
 }

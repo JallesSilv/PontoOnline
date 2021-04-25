@@ -6,14 +6,14 @@ namespace Dominio.Contratos
 {
     public interface IBaseRepository<TEntity> : IDisposable where TEntity : class
     {
-        void Adicionar(TEntity entity);
+        TEntity Create(TEntity entity);
 
-        TEntity ObterChave(Int64 pChave);
+        TEntity ObterChave(Guid pChave);
 
         IEnumerable<TEntity> ObterTodos();
 
-        void Atualizar(TEntity entity);
+        void Edit(TEntity entity);
 
-        void Remover(TEntity entity);
+        void Delete(TEntity entity);
     }
 }

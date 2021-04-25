@@ -1,5 +1,7 @@
 ﻿using Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
+using Repositorio.Config;
+using System.Data.SqlClient;
 
 namespace Repositorio.Contexto
 {
@@ -10,17 +12,21 @@ namespace Repositorio.Contexto
             
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var stringBuillder = new SqlConnectionStringBuilder()
+            {
+                DataSource = XConfig.DataSource,
+                InitialCatalog = XConfig.InitialCatalog,
+                UserID = XConfig.UserID,
+                Password = XConfig.Password
+            };
+            optionsBuilder.UseSqlServer(stringBuillder.ConnectionString);
+        }
 
-        //}
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-            //modelBuilder.Entity<Usuario>()
-            //    .Property(b => b.Empresa)
-            //    .IsRequired();
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+        }
 
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Cargo> Cargo { get; set; }

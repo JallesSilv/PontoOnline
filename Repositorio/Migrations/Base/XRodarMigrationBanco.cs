@@ -13,8 +13,8 @@ namespace Repositorio.Migrations.Base
             MBanco.Banco();
             MPonto.Ponto();
             MImagem.Imagem();
-            MCargo.Cargo();
             MNivelAcesso.NivelAcesso();
+            MCargo.Cargo();
             MEndereco.Endereco();
             MEmpresa.Empresa();
             MUsuario.Usuario();
